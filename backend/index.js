@@ -5,26 +5,28 @@ const analyzeRoute = require('./routes/analyze');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000; // Railway will inject PORT env
 
-// Middleware
+// ✅ Log startup clearly
+console.log('🔧 Initializing Astro Laser Strike backend...');
+
+// Middlewares
 app.use(cors());
 app.use(express.json());
 
-// Routes
+// API Routes
 app.use('/api/analyze', analyzeRoute);
 
-// ✅ Healthcheck route for Railway
+// ✅ Health Check Routes
 app.get('/', (req, res) => {
-  res.send('✅ Astro Laser Strike API is alive!');
+  res.send('✅ API is alive!');
 });
 
-// Optional: add /health if needed for monitoring tools
 app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'healthy' });
+  res.json({ status: 'healthy' });
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Backend server running on http://localhost:${PORT}`);
+// ✅ Start server
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 Server is live on http://0.0.0.0:${PORT}`);
 });
