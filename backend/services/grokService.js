@@ -3,7 +3,19 @@ const axios = require('axios');
 const analyzeShot = async (lat, lon, result) => {
   const apiKey = process.env.XAI_API_KEY;
 
-  const prompt = `The player fired at coordinates: latitude ${lat}, longitude ${lon}. The result was a ${result}. Explain the result and offer suggestions.`;
+  // const prompt = `The player fired at coordinates: latitude ${lat}, longitude ${lon}. The result was a ${result}. Explain the result persich.`;
+  const prompt = `
+📍 Player fired at (Lat: ${lat}, Lon: ${lon}) and it was a ${result === 'hit' ? 'hit 🎯' : 'miss ❌'}.
+
+Let the player know — in a short, friendly and playful tone — what probably went wrong.
+
+If it was a miss:
+- Estimate the directional error (e.g. “You were about 2° too far west!”)
+- Suggest a better coordinate to try next (e.g. “Try Lat 4, Lon 6!”)
+
+Keep it short, fun, casual, and talk like you're inside a space adventure game. Use emojis if helpful ✨
+`;
+
 
   const response = await axios.post('https://api.x.ai/v1/chat/completions', {
     model: 'grok-3-latest',

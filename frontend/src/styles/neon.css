@@ -75,3 +75,49 @@ footer {
   left: 1rem;
   z-index: 999;
 }
+
+.star-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.star-wrapper {
+  text-align: center;
+  position: relative;
+}
+
+.star {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin: 0 auto 5px;
+  animation: twinkle 1.5s infinite;
+}
+
+.yellow {
+  background-color: #ffd700;
+  box-shadow: 0 0 8px #ffd700;
+}
+
+.blue {
+  background-color: #00ffff;
+  box-shadow: 0 0 8px #00ffff;
+}
+
+.star-info {
+  font-size: 0.8rem;
+  color: #ccc;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.3);
+  }
+}

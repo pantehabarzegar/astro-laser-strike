@@ -9,7 +9,7 @@ import StarsAroundTarget from './components/StarsAroundTarget';
 import LaserCannon from './components/LaserCannon';
 import CoordinateInput from './components/CoordinateInput';
 import Notification from './components/Notification';
-import AdviceCard from './components/AdviceCard';
+
 
 import './styles/neon.css';
 
@@ -24,9 +24,9 @@ const App = () => {
       <CoordinateInput setCoords={setCoords} setResult={setStatus} />
       
       <Notification status={status} />
-      <AdviceCard coords={coords} status={status} />
+      
 
-      <Canvas style={{ height: '80vh', background: 'black' }}>
+      <Canvas style={{ height: '50vh', background: 'black' }}>
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
         <CelestialSphere />

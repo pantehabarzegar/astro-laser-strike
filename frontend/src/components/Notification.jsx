@@ -1,7 +1,21 @@
-import React from 'react';
+ import React, { useEffect, useState } from 'react';
 
 const Notification = ({ status }) => {
-  if (!status) return null;
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    if (status) {
+      setVisible(true);
+
+      const timer = setTimeout(() => {
+        setVisible(false);
+      }, 3000); // ⏱️ بعد از 3 ثانیه پیام ناپدید میشه
+
+      return () => clearTimeout(timer); // جلوگیری از حافظه‌ی اضافه
+    }
+  }, [status]);
+
+  if (!visible) return null;
 
   const isSuccess = status === 'hit';
 

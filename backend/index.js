@@ -5,7 +5,7 @@ const analyzeRoute = require('./routes/analyze');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3000; // Railway will inject PORT env
+const PORT = process.env.PORT || 5000; // Railway will inject PORT env
 
 // ✅ Log startup clearly
 console.log('🔧 Initializing Astro Laser Strike backend...');

@@ -4,10 +4,12 @@ import { geoToCartesian } from '../utils/sphericalMath';
 
 const Meteorite = () => {
   const randomCoords = useMemo(() => {
-    const lat = Math.floor(Math.random() * 90);    // 0° to 89°
-    const lon = Math.floor(Math.random() * 360);   // 0° to 359°
-    return geoToCartesian(lat, lon);
-  }, []); // ← run once per component mount (on page load)
+    const lat = Math.floor(Math.random() * 9) * 10;     // 0 to 80 (ده‌تایی)
+    const lon = Math.floor(Math.random() * 36) * 10;    // 0 to 350 (ده‌تایی)
+
+    const [x, y, z] = geoToCartesian(lat, lon);
+    return [x, y, z]; // ❗ x, y, z می‌تونن اعشاری بمونن چون سه‌بعدی نیاز دقت داره
+  }, []);
 
   const [x, y, z] = randomCoords;
 
@@ -20,3 +22,4 @@ const Meteorite = () => {
 };
 
 export default Meteorite;
+
